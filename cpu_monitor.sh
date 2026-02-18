@@ -17,7 +17,7 @@ IP_ADDRESS=$(hostname -i | awk '{print $1}')
 REQUIRED_COUNT=$(( (ALERT_MINUTES * 60) / CHECK_INTERVAL ))
 COUNTER=0
 
-# Funzione per ottenere i 3 processi più pesanti
+# Funzione per ottenere i processi più pesanti
 get_top_processes() {
     N="${TOP_N_PROCESSES:-3}"
 

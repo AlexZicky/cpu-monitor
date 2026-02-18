@@ -1,1 +1,1 @@
-docker compose up -d --build# cpu-monitor
+docker compose up -d --build
