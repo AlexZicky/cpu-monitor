@@ -1,0 +1,29 @@
+services:
+  cpu-monitor:
+    build: .
+    container_name: cpu-monitor
+    pid: "host"
+    network_mode: "host"
+    environment:
+      # your time zone
+      TZ: "Europe/Rome"
+      # your gotify url /message
+      GOTIFY_URL: "https://gotify.serverName.tld/message"
+      # uour Gotify App Token
+      GOTIFY_TOKEN: "YourGotifyToken"
+      CPU_THRESHOLD: "95"
+      # in seconds
+      CHECK_INTERVAL: "60"
+      # in minutes
+      ALERT_MINUTES: "5"
+      # number top cpu load to see
+      TOP_N_PROCESSES: "10"
+      # your main net interface
+      NET_IFACE: "eth0" 
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc:/host_proc:ro
+      - /sys/fs/cgroup:/host_cgroup:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: always
